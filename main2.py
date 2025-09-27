@@ -30,7 +30,7 @@ password = 'Senai%40134'
 database = 'db_analise'
 
 
-uri = f"mysql://{username}:{password}@{server_name}:{port}/{database}"
+uri = f"mysql+pymysql://{username}:{password}@{server_name}:{port}/{database}"
 
 app.config['SQLALCHEMY_DATABASE_URI'] = uri
 
