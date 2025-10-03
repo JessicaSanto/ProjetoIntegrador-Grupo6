@@ -32,7 +32,7 @@ database = 'db_analise'
 certificado = 'DigiCertGlobalRootG2.crt.pem'
 
 
-uri = f"mysql://{username}:{password}@{server_name}:{port}/{database}"
+uri = f"mysql+pymysql://{username}:{password}@{server_name}:{port}/{database}"
 ssl_certificate = f"?ssl_ca={certificado}"
 
 app.config['SQLALCHEMY_DATABASE_URI'] = uri + ssl_certificate
