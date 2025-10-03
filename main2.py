@@ -290,4 +290,3 @@ def gera_resposta(status,conteudo,mensagem=False):
 
 start_mqtt()
 app.run(port=5000, host='0.0.0.0', debug=True)
-
