@@ -23,17 +23,19 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 
 
-server_name ='127.0.0.1'
+server_name ='projetointegrador-grupo-5.mysql.database.azure.com'
 port = '3306'
-username = 'root'
-password = 'Senai%40134'
+username = 'grupo5'
+password = 'senai%40134'
 database = 'db_analise'
 
+certificado = 'DigiCertGlobalRootG2.crt.pem'
 
-uri = f"mysql+pymysql://{username}:{password}@{server_name}:{port}/{database}"
 
-app.config['SQLALCHEMY_DATABASE_URI'] = uri
+uri = f"mysql://{username}:{password}@{server_name}:{port}/{database}"
+ssl_certificate = f"?ssl_ca={certificado}"
 
+app.config['SQLALCHEMY_DATABASE_URI'] = uri + ssl_certificate
 
 mybd= SQLAlchemy(app)
 
@@ -47,7 +49,7 @@ mqtt_data = {}
 
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
-    client.subscribe("projeto_integrado/SENAI134/Cienciadedados/grupo1")
+    client.subscribe("projeto_integrado/SENAI134/Cienciadedados/grupo6")
 
 def on_message(client, userdata, msg):
     global mqtt_data
